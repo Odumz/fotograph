@@ -1,0 +1,10 @@
+{
+    "Auth": true,
+    "About": true,
+    "Dashboard": true,
+    "Gallery": true,
+    "Pricing": true,
+    "Profile": true,
+    "Settings": true,
+    "Users": true
+}

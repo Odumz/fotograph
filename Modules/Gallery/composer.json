@@ -1,0 +1,23 @@
+{
+    "name": "bhringraj/gallery",
+    "description": "",
+    "authors": [
+        {
+            "name": "Oluwashina Odumosu",
+            "email": "odumz20@gmail.com"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [],
+            "aliases": {
+
+            }
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Modules\\Gallery\\": ""
+        }
+    }
+}

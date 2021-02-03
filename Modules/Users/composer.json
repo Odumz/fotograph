@@ -1,0 +1,23 @@
+{
+    "name": "bhringraj/users",
+    "description": "",
+    "authors": [
+        {
+            "name": "Oluwashina Odumosu",
+            "email": "odumz20@gmail.com"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [],
+            "aliases": {
+
+            }
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Modules\\Users\\": ""
+        }
+    }
+}
