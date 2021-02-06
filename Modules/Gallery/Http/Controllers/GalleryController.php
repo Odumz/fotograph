@@ -6,6 +6,10 @@ use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 
+use Modules\Gallery\Entities\Collections;
+use Modules\Gallery\Entities\Tags;
+use Modules\Gallery\Entities\Images;
+
 class GalleryController extends Controller
 {
     /**
@@ -14,7 +18,8 @@ class GalleryController extends Controller
      */
     public function index()
     {
-        return view('gallery::index');
+        // return view('gallery::index');
+        return Images::orderBy('created_at', 'DESC')->get();
     }
 
     /**
@@ -33,7 +38,13 @@ class GalleryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $newImage = new Image;
+        $newImage->name = $request->image['name'];
+        $newImage->image_url = $request->image['image_url'];
+        $newImage->tag = $request->image[['tag']];
+        $newImage->author_id = $request->image['author_id'];
+        $newImage->collection_id = $request->image[['coloection_id']];
+        $newImage->name = $request->image['name'];
     }
 
     /**
