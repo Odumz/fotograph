@@ -17,6 +17,7 @@ class CreateImagesTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('image_url');
+            $table->string('type');
             $table->integer('download_frequency');
             $table->integer('views');
             $table->foreignId('author_id');

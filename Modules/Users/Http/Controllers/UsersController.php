@@ -6,6 +6,8 @@ use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 
+use Modules\Auth\Entities\Users;
+
 class UsersController extends Controller
 {
     /**
@@ -14,7 +16,8 @@ class UsersController extends Controller
      */
     public function index()
     {
-        return view('users::index');
+        // return view('users::index');
+        return Users::orderBy('created_at', 'DESC')->get();
     }
 
     /**

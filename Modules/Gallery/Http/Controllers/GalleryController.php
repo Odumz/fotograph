@@ -36,15 +36,44 @@ class GalleryController extends Controller
      * @param Request $request
      * @return Renderable
      */
-    public function store(Request $request)
+    public function storeImage(Request $request)
     {
         $newImage = new Image;
+        $newImageTag = $request->image[['tags']];
+        if (count($newImageTag) == 0) { return; }
+        else {
+            foreach ($newImageTag as $tag) {
+                $newTag = new Tags;
+                $newTag->name =  $tag;
+                $newTag->save();
+                $tag_ids = [];
+                array_push($tag_ids, $newTag->id);
+                return $tag_ids;
+            }
+        }
+
+        $newImageCollection = $request->image[['collections']];
+        if (count($newImageCollection) == 0) { return; }
+        else {
+            foreach ($newImageCollection as $collection) {
+                $newCollection = new Collections;
+                $newCollection->name =  $collection;
+                $newCollection->save();
+                $collection_ids = [];
+                array_push($collection_ids, $newCollection->id);
+                return $collection_ids;
+            }
+        }
+
         $newImage->name = $request->image['name'];
         $newImage->image_url = $request->image['image_url'];
-        $newImage->tag = $request->image[['tag']];
+        $newImage->tag = $tag_ids;
         $newImage->author_id = $request->image['author_id'];
-        $newImage->collection_id = $request->image[['coloection_id']];
-        $newImage->name = $request->image['name'];
+        $newImage->type = $request->image['type'];
+        $newImage->collection_id = $collection_ids;
+        $newImage->save();
+
+        return $newImage;
     }
 
     /**
@@ -75,7 +104,39 @@ class GalleryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $existing_image_tags = $request->image[['tags']];
+        if (count($existing_image_tags) == 0) { return; }
+        else {
+            foreach ($existing_image_tags->tag as $tag) {
+                $newTag = new Tags;
+                $newTag->name =  $tag;
+                $newTag->save();
+                $tag_ids = [];
+                array_push($tag_ids, $newTag->id);
+                return $tag_ids;
+            }
+        }
+
+        $existing_image_collection = $request->image[['collection']];
+        if (count($existing_image_collection) == 0) { return; }
+        else {
+            foreach ($existing_image_collection as $collection) {
+                $newCollection = new Collections;
+                $newCollection->name =  $collection;
+                $newCollection->save();
+                $collection_ids = [];
+                array_push($collection_ids, $newCollection->id);
+                return $collection_ids;
+            }
+        }
+
+        $existingImage = Images::find($id);
+        if ( $existingImage ) {
+            $existingImage->name = $request->image['name'];
+            $existingImage->image_url = $request->image['image_url'];
+            $existingImage->tags = $tag_ids;
+            $existingImage->collection = $collection_ids;
+        }
     }
 
     /**

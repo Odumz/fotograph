@@ -6,6 +6,8 @@ use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 
+use Modules\Pricing\Entities\Pricing;
+
 class PricingController extends Controller
 {
     /**
@@ -23,7 +25,8 @@ class PricingController extends Controller
      */
     public function create()
     {
-        return view('pricing::create');
+        // return view('pricing::create');
+        return Pricing::orderBy('created_at', 'DESC')->get();
     }
 
     /**
