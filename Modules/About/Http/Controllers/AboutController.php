@@ -6,6 +6,10 @@ use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 
+use Modules\Auth\Entities\User;
+use Modules\Profile\Entities\UserProfile;
+use Modules\Profile\Entities\UserSocials;
+
 class AboutController extends Controller
 {
     /**
@@ -15,6 +19,33 @@ class AboutController extends Controller
     public function index()
     {
         return view('about::index');
+    }
+
+    /**
+     * Display a listing of the resource.
+     * @return Renderable
+     */
+    public function faq()
+    {
+        return view('about::faq');
+    }
+
+    /**
+     * Display a listing of the resource.
+     * @return Renderable
+     */
+    public function testimonial()
+    {
+        return view('about::testimonial');
+    }
+
+    /**
+     * Display a listing of the resource.
+     * @return Renderable
+     */
+    public function license()
+    {
+        return view('about::license');
     }
 
     /**

@@ -6,6 +6,10 @@ use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 
+use Modules\Auth\Entities\User;
+use Modules\Profile\Entities\UserProfile;
+use Modules\Profile\Entities\UserSocials;
+
 class SettingsController extends Controller
 {
     /**

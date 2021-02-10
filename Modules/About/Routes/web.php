@@ -13,4 +13,7 @@
 
 Route::prefix('about')->group(function() {
     Route::get('/', 'AboutController@index');
+    Route::get('/faq', 'AboutController@faq');
+    Route::get('/testimonial', 'AboutController@testimonial');
+    Route::get('/license', 'AboutController@license');
 });

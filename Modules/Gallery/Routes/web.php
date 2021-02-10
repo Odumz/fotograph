@@ -13,4 +13,8 @@
 
 Route::prefix('gallery')->group(function() {
     Route::get('/', 'GalleryController@index');
+    Route::post('/store', 'GalleryController@storeImage');
+    Route::get('/{id}', 'GalleryController@show');
+    Route::put('/update', 'GalleryController@index');
+    Route::delete('/{id}', 'GalleryController@destroy');
 });

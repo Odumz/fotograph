@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 
 use Modules\Auth\Entities\Users;
+use Modules\Profile\Entities\UserProfile;
+use Modules\Profile\Entities\UserSocials;
 
 class UsersController extends Controller
 {
